@@ -21,11 +21,11 @@
   <nav class="main-nav">
     <div class="container">
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="apply.html">Apply</a></li> <!-- Added Apply link -->
+        <li><a href="contact.html" class="active">Contact</a></li> <!-- Ensure active class -->
+        <li><a href="apply.html">Apply</a></li>
       </ul>
     </div>
   </nav>
@@ -34,7 +34,7 @@
     <section class="contact-info-section">
       <div class="container">
         <h2>Get in Touch</h2>
-        <p>We are available around the clock to assist you. Please reach out via phone, email, or visit us.</p>
+        <p>We are available around the clock to assist you. Please reach out via phone, email, or visit us at one of our locations.</p>
         <div class="contact-details">
           <div class="contact-card">
             <h3>Email</h3>
@@ -47,15 +47,59 @@
             <p>Office Direct: <strong>0905 076 2726</strong></p>
           </div>
           <div class="contact-card">
-            <h3>Address</h3>
+            <h3>Main Office Address</h3> <!-- Clarified this is main office -->
             <p>P-8 Sinayawan, Valencia City, Bukidnon</p>
             <p><em>Open 24 Hours / 7 Days a Week</em></p>
           </div>
         </div>
-         <!-- Optional: Add a contact form or map here -->
-         <!-- <div class="map-placeholder">Map Goes Here</div> -->
+         <!-- Optional: Add a contact form here -->
+         <!-- <div class="contact-form-placeholder">Contact Form Goes Here</div> -->
       </div>
     </section>
+
+    <!-- START: New Locations Section (Copied from about.html structure) -->
+    <section class="locations-section">
+        <div class="container">
+            <h2>Our Branch Locations</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem auto;">Find directions to our branches below.</p>
+            <div class="locations-grid">
+                <!-- Valencia Branch -->
+                <div class="location-map-container">
+                    <h3>Valencia Branch</h3>
+                    <div class="map-wrapper">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247.00955530875035!2d125.14400395096396!3d7.879067446346074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32ff1fbe9eccc9bf%3A0xac4bdac8318769da!2sSalvador%20Indigent%20Memorial%20Service!5e0!3m2!1sen!2sph!4v1744635360733!5m2!1sen!2sph"
+                            width="100%"
+                            height="350"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <p class="map-address">P-8 Sinayawan, Valencia City, Bukidnon</p>
+                </div>
+                <!-- Cagayan Branch -->
+                <div class="location-map-container">
+                    <h3>Cagayan De Oro Branch</h3>
+                     <div class="map-wrapper">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.0729323665764!2d124.73967397591436!3d8.492289997157414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32ffed006bd23375%3A0x4ac8a45ce7bcf78!2sSalvador%20Indigent%20Memorial%20Services%20(Cagayan%20De%20Oro)!5e0!3m2!1sen!2sph!4v1744635407725!5m2!1sen!2sph"
+                            width="100%"
+                            height="350"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                     <p class="map-address">Cagayan de Oro, Misamis Oriental</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: New Locations Section -->
+
   </main>
 
   <footer class="site-footer">
