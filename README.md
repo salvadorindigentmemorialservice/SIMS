@@ -1,2 +1,2 @@
-# SIMS
+# sims.github.io
 Website

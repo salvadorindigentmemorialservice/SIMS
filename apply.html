@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply Online - Salvador Indigent Memorial Services</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Add specific styles for apply page if needed, or inline below -->
+  <style>
+    /* Styles specific to apply.html */
+    .apply-section {
+      background-color: var(--white);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      max-width: 700px; /* Limit width for better focus */
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .apply-section h2, .apply-section h3 {
+        text-align: center;
+        color: var(--primary-blue);
+    }
+     .apply-section h3 {
+        color: var(--primary-green);
+        margin-bottom: 1.5rem;
+    }
+
+    .form-step {
+        margin-bottom: 1.5rem;
+    }
+    .form-step label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        color: var(--dark-grey);
+    }
+    .form-step input[type="text"] {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid var(--medium-grey);
+        border-radius: 5px;
+        font-size: 1rem;
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    #signature-pad-container {
+        border: 2px dashed var(--medium-grey);
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        position: relative; /* Needed for potential overlays */
+        height: 250px; /* Adjust height as needed */
+        background-color: #fdfdfd; /* Slightly off-white */
+        cursor: crosshair;
+    }
+
+    #signature-pad {
+        display: block; /* Canvas is inline by default */
+        width: 100%;
+        height: 100%;
+    }
+
+    .signature-controls {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    #result-container {
+        text-align: center;
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background-color: var(--light-grey);
+        border-radius: 5px;
+        border: 1px solid var(--medium-grey);
+    }
+    #result-container img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid var(--dark-grey);
+        margin-top: 0.5rem;
+    }
+
+    #form-section iframe {
+        width: 100%;
+        height: 800px; /* Adjust height as needed */
+        border: 1px solid var(--medium-grey);
+        border-radius: 5px;
+    }
+
+    .error-message {
+        color: var(--primary-red);
+        font-weight: bold;
+        text-align: center;
+        margin-top: 1rem;
+        display: none; /* Hidden by default */
+    }
+
+    /* Hide sections initially */
+    #signature-section, #result-section, #form-section {
+        display: none;
+    }
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <img src="logo.jpg" alt="Salvador Indigent Memorial Services Logo" class="logo">
+       <div class="header-text">
+         <h1>Online Application</h1>
+         <p class="tagline">Secure your plan in a few simple steps.</p>
+       </div>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="apply.html" class="active">Apply</a></li> <!-- Active link -->
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="apply-section">
+      <h2>Application Process</h2>
+
+      <!-- Step 1: Enter Full Name -->
+      <div id="name-section" class="form-step">
+        <h3>Step 1: Enter Your Full Name</h3>
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" placeholder="e.g., Juan Dela Cruz" required>
+        <div class="button-group" style="text-align: center; margin-top: 1rem;">
+            <button id="next-to-signature" class="btn btn-primary">Next: Add Signature</button>
+        </div>
+        <p id="name-error" class="error-message">Please enter your full name.</p>
+      </div>
+
+      <!-- Step 2: Signature Pad -->
+      <div id="signature-section" class="form-step">
+        <h3>Step 2: Provide Your Signature</h3>
+        <p style="text-align: center; margin-bottom: 1rem;">Please sign clearly within the box below using your mouse or finger.</p>
+        <div id="signature-pad-container">
+          <canvas id="signature-pad"></canvas>
+        </div>
+        <div class="signature-controls">
+          <button id="clear-signature" class="btn btn-secondary" style="background-color: var(--primary-red);">Clear</button>
+          <button id="save-signature" class="btn btn-primary">Confirm Signature & Proceed</button>
+        </div>
+         <p id="signature-error" class="error-message">Please provide your signature.</p>
+      </div>
+
+      <!-- Step 3: Show Generated Image (Optional Confirmation) -->
+       <div id="result-section" class="form-step">
+        <h3>Step 3: Confirmation</h3>
+        <p style="text-align: center;">Thank you! Here is your confirmation:</p>
+        <div id="result-container">
+            <p><strong>Applicant:</strong> <span id="result-name"></span></p>
+            <img id="signature-image" src="" alt="Generated Signature">
+        </div>
+        <p style="text-align: center; margin-top: 1.5rem;">You will now be directed to the application form.</p>
+      </div>
+
+      <!-- Step 4: Google Form Iframe -->
+      <div id="form-section" class="form-step">
+        <h3>Step 4: Complete Application Form</h3>
+        <p style="text-align: center; margin-bottom: 1rem;">Please fill out the details below to complete your application.</p>
+        <iframe id="google-form-iframe" src="" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Salvador Indigent Memorial Services. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Signature Pad Library -->
+  <script src="js/signature_pad.umd.min.js"></script> <!-- Adjust path if needed -->
+
+  <!-- Custom JavaScript for Apply Page Logic -->
+  <script src="js/apply.js"></script>
+
+</body>
+</html>
