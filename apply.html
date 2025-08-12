@@ -3,112 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Apply online for Salvador Indigent Memorial Services plans. Secure your memorial plan with our simple 4-step application process. Digital signature and form completion included.">
+  <meta name="keywords" content="apply memorial plan, online application, SIMS application, memorial services signup, funeral plan application">
   <title>Apply Online - Salvador Indigent Memorial Services</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Add specific styles for apply page if needed, or inline below -->
-  <style>
-    /* Styles specific to apply.html */
-    .apply-section {
-      background-color: var(--white);
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      max-width: 700px; /* Limit width for better focus */
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .apply-section h2, .apply-section h3 {
-        text-align: center;
-        color: var(--primary-blue);
-    }
-     .apply-section h3 {
-        color: var(--primary-green);
-        margin-bottom: 1.5rem;
-    }
-
-    .form-step {
-        margin-bottom: 1.5rem;
-    }
-    .form-step label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 700;
-        color: var(--dark-grey);
-    }
-    .form-step input[type="text"] {
-        width: 100%;
-        padding: 0.8rem;
-        border: 1px solid var(--medium-grey);
-        border-radius: 5px;
-        font-size: 1rem;
-        box-sizing: border-box; /* Include padding in width */
-    }
-
-    #signature-pad-container {
-        border: 2px dashed var(--medium-grey);
-        border-radius: 5px;
-        margin-bottom: 1rem;
-        position: relative; /* Needed for potential overlays */
-        height: 250px; /* Adjust height as needed */
-        background-color: #fdfdfd; /* Slightly off-white */
-        cursor: crosshair;
-    }
-
-    #signature-pad {
-        display: block; /* Canvas is inline by default */
-        width: 100%;
-        height: 100%;
-    }
-
-    .signature-controls {
-        text-align: center;
-        margin-bottom: 1.5rem;
-    }
-
-    #result-container {
-        text-align: center;
-        margin-top: 1.5rem;
-        padding: 1rem;
-        background-color: var(--light-grey);
-        border-radius: 5px;
-        border: 1px solid var(--medium-grey);
-    }
-    #result-container img {
-        max-width: 100%;
-        height: auto;
-        border: 1px solid var(--dark-grey);
-        margin-top: 0.5rem;
-    }
-
-    #form-section iframe {
-        width: 100%;
-        height: 800px; /* Adjust height as needed */
-        border: 1px solid var(--medium-grey);
-        border-radius: 5px;
-    }
-
-    .error-message {
-        color: var(--primary-red);
-        font-weight: bold;
-        text-align: center;
-        margin-top: 1rem;
-        display: none; /* Hidden by default */
-    }
-
-    /* Hide sections initially */
-    #signature-section, #result-section, #form-section {
-        display: none;
-    }
-
-  </style>
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header" role="banner">
     <div class="container header-content">
-      <img src="logo.jpg" alt="Salvador Indigent Memorial Services Logo" class="logo">
+      <img src="logo.jpg" alt="Salvador Indigent Memorial Services Logo - Compassionate memorial care since 2003" class="logo" onerror="this.onerror=null;this.src='https://placehold.co/80x80?text=SIMS+Logo';">
        <div class="header-text">
          <h1>Online Application</h1>
          <p class="tagline">Secure your plan in a few simple steps.</p>
@@ -116,14 +20,14 @@
     </div>
   </header>
 
-  <nav class="main-nav">
+  <nav class="main-nav" role="navigation" aria-label="Main navigation">
     <div class="container">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="apply.html" class="active">Apply</a></li> <!-- Active link -->
+      <ul role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="about.html" role="menuitem">About Us</a></li>
+        <li role="none"><a href="services.html" role="menuitem">Services</a></li>
+        <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+        <li role="none"><a href="apply.html" class="active" role="menuitem" aria-current="page">Apply</a></li>
       </ul>
     </div>
   </nav>
@@ -185,7 +89,7 @@
   </footer>
 
   <!-- Signature Pad Library -->
-  <script src="js/signature_pad.umd.min.js"></script> <!-- Adjust path if needed -->
+  <script src="js/signature_pad.umd.min.js"></script>
 
   <!-- Custom JavaScript for Apply Page Logic -->
   <script src="js/apply.js"></script>

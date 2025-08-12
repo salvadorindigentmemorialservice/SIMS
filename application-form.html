@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete your Salvador Indigent Memorial Services application with our comprehensive online form. Secure and easy application process.">
+  <meta name="keywords" content="SIMS application form, memorial services application, online form, funeral plan signup">
+  <title>Complete Your Application - Salvador Indigent Memorial Services</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Additional styles specific to the application form page */
+    .application-form-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: var(--sims-white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-light);
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, var(--sims-green) 0%, var(--sims-green-light) 100%);
+      border-radius: var(--border-radius);
+      color: var(--sims-white);
+    }
+
+    .form-header h1 {
+      color: var(--sims-white);
+      margin-bottom: 1rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .form-header p {
+      color: var(--sims-cream);
+      font-size: 1.2rem;
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    .google-form-wrapper {
+      width: 100%;
+      min-height: 800px;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      border: 2px solid var(--border-light);
+      background: var(--sims-white);
+    }
+
+    .google-form-iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
+      border-radius: var(--border-radius);
+    }
+
+    .form-instructions {
+      background: var(--sims-cream);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 2rem;
+      border-left: 5px solid var(--sims-green);
+    }
+
+    .form-instructions h3 {
+      color: var(--sims-green);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .form-instructions ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .form-instructions li {
+      padding: 0.5rem 0;
+      color: var(--text-medium);
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .form-instructions li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--sims-green);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .support-section {
+      background: linear-gradient(135deg, var(--border-light) 0%, var(--sims-cream) 100%);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      margin-top: 2rem;
+      text-align: center;
+      border: 1px solid var(--border-light);
+    }
+
+    .support-section h3 {
+      color: var(--sims-red);
+      margin-bottom: 1rem;
+    }
+
+    .support-section p {
+      color: var(--text-medium);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-item {
+      background: var(--sims-white);
+      padding: 1.5rem;
+      border-radius: var(--border-radius-small);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border: 1px solid var(--border-light);
+    }
+
+    .contact-item h4 {
+      color: var(--sims-green);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-item p {
+      color: var(--text-dark);
+      margin: 0;
+      font-weight: 500;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .application-form-container {
+        padding: 1rem;
+        margin: 1rem;
+      }
+
+      .form-header {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .google-form-iframe {
+        height: 600px;
+      }
+
+      .form-instructions {
+        padding: 1.5rem;
+      }
+
+      .support-section {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .google-form-iframe {
+        height: 500px;
+      }
+    }
+
+    /* Loading animation */
+    .loading-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--sims-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--border-radius);
+      z-index: 10;
+    }
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid var(--border-light);
+      border-top: 4px solid var(--sims-green);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container header-content">
+      <img src="logo.jpg" alt="Salvador Indigent Memorial Services Logo - Compassionate memorial care since 2003" class="logo" onerror="this.onerror=null;this.src='https://placehold.co/80x80?text=SIMS+Logo';">
+       <div class="header-text">
+         <h1>Application Form</h1>
+         <p class="tagline">Complete your memorial plan application</p>
+       </div>
+    </div>
+  </header>
+
+  <nav class="main-nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <ul role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="about.html" role="menuitem">About Us</a></li>
+        <li role="none"><a href="services.html" role="menuitem">Services</a></li>
+        <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+        <li role="none"><a href="apply.html" role="menuitem">Apply</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="application-form-container">
+        
+        <!-- Form Header -->
+        <div class="form-header">
+          <h1>Complete Your Application</h1>
+          <p>You're just one step away from securing your memorial plan. Please fill out the form below with accurate information.</p>
+        </div>
+
+        <!-- Instructions Section -->
+        <div class="form-instructions">
+          <h3>Before You Begin</h3>
+          <ul>
+            <li>Ensure all information provided is accurate and complete</li>
+            <li>Have your identification documents ready for reference</li>
+            <li>The form will take approximately 5-10 minutes to complete</li>
+            <li>Your signature has been successfully captured and saved</li>
+            <li>All information is securely encrypted and protected</li>
+          </ul>
+        </div>
+
+        <!-- Google Form Integration -->
+        <div class="google-form-wrapper" style="position: relative;">
+          <div class="loading-overlay" id="loading-overlay">
+            <div class="loading-spinner"></div>
+          </div>
+          <iframe 
+            class="google-form-iframe" 
+            id="google-form"
+            src="https://forms.gle/g4hf34t5yMNuzBz48"
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0"
+            title="SIMS Memorial Plan Application Form">
+            Loading application form...
+          </iframe>
+        </div>
+
+        <!-- Support Section -->
+        <div class="support-section">
+          <h3>Need Assistance?</h3>
+          <p>If you encounter any issues while filling out the form or have questions about your application, our support team is here to help.</p>
+          
+          <div class="contact-info">
+            <div class="contact-item">
+              <h4>Phone Support</h4>
+              <p>Call us at: <strong>(088) 123-4567</strong></p>
+            </div>
+            <div class="contact-item">
+              <h4>Email Support</h4>
+              <p>Email: <strong>support@sims.com.ph</strong></p>
+            </div>
+            <div class="contact-item">
+              <h4>Office Hours</h4>
+              <p><strong>Mon-Fri: 8:00 AM - 5:00 PM</strong></p>
+            </div>
+            <div class="contact-item">
+              <h4>Location</h4>
+              <p><strong>Valencia City, Bukidnon</strong></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Salvador Indigent Memorial Services. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Hide loading overlay when iframe loads
+    document.getElementById('google-form').addEventListener('load', function() {
+      const loadingOverlay = document.getElementById('loading-overlay');
+      if (loadingOverlay) {
+        loadingOverlay.style.display = 'none';
+      }
+    });
+
+    // Handle iframe loading timeout
+    setTimeout(function() {
+      const loadingOverlay = document.getElementById('loading-overlay');
+      if (loadingOverlay && loadingOverlay.style.display !== 'none') {
+        loadingOverlay.innerHTML = '<p style="color: var(--text-medium); text-align: center;">Form is taking longer to load. Please refresh the page if needed.</p>';
+      }
+    }, 10000); // 10 seconds timeout
+
+    // Add smooth scroll behavior for better UX
+    document.documentElement.style.scrollBehavior = 'smooth';
+
+    // Welcome message (optional)
+    window.addEventListener('load', function() {
+      console.log('SIMS Application Form loaded successfully');
+    });
+  </script>
+
+</body>
+</html>
