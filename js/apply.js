@@ -157,11 +157,33 @@ document.addEventListener('DOMContentLoaded', () => {
             downloadLink.click(); // Simulate click to trigger download
             document.body.removeChild(downloadLink); // Clean up the temporary link
 
-            // --- Proceed to Google Form ---
+            // --- Open Application Form in New Tab/Window ---
             signatureSection.style.display = 'none';
-            // resultSection.style.display = 'none'; // Ensure result section is hidden
-            formSection.style.display = 'block';
-            formIframe.src = googleFormUrl; // Load the form URL
+            
+            // Show a brief confirmation message
+            const confirmationDiv = document.createElement('div');
+            confirmationDiv.innerHTML = `
+                <div style="text-align: center; padding: 3rem; background: var(--sims-cream); border-radius: var(--border-radius); margin: 2rem 0;">
+                    <h3 style="color: var(--sims-green); margin-bottom: 1rem;">Signature Saved Successfully!</h3>
+                    <p style="color: var(--text-medium); margin-bottom: 2rem;">Your signature has been captured and downloaded. The application form will open in a new tab.</p>
+                    <div style="margin-bottom: 2rem;">
+                        <div style="display: inline-block; width: 50px; height: 50px; border: 4px solid var(--border-light); border-top: 4px solid var(--sims-green); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                    </div>
+                    <p style="color: var(--text-light); font-size: 0.9rem;">If the form doesn't open automatically, <a href="application-form.html" target="_blank" style="color: var(--sims-green); text-decoration: underline;">click here</a>.</p>
+                </div>
+            `;
+            
+            // Insert confirmation after signature section
+            signatureSection.parentNode.insertBefore(confirmationDiv, signatureSection.nextSibling);
+            
+            // Open the application form in a new tab/window after a short delay
+            setTimeout(() => {
+                const newWindow = window.open('application-form.html', '_blank');
+                if (!newWindow) {
+                    // If popup was blocked, show alternative
+                    alert('Please allow popups for this site, or click the link in the confirmation message to open the application form.');
+                }
+            }, 1500); // 1.5 second delay to show confirmation
 
         }; // End of signatureImage.onload
 
